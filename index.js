@@ -50,5 +50,31 @@ const utils = {
   unique
 }
 
+export {
+  ajax,
+  bind,
+  convertContentEditable,
+  convertContentFocus,
+  convertOnPaste,
+  convertToMarkup,
+  convertToText,
+  exists,
+  getDataByName,
+  log,
+  markdown,
+  navigate,
+  parseFormData,
+  path,
+  placeholder,
+  regex,
+  save,
+  stop,
+  storage,
+  title,
+  today,
+  trim,
+  unique
+}
+
 // Expose object.
 export default utils
