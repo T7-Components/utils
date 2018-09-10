@@ -20,6 +20,7 @@ const save = (
   const hasFeatures = (
     typeof window.Blob === 'function' &&
     typeof window.URL === 'function' &&
+    typeof document.createElement === 'function' &&
     typeof document.createEvent === 'function'
   )
 
