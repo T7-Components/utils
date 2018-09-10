@@ -16,7 +16,6 @@ eg. `utils.bind()` vs `myfunction = this.myfunction.bind(this)`
 - convert_to_markup: converts plain text received from an API call for use in a `contentEditable` area  
 - convert_to_text: convert innerHTML content to plain text  
 - exists: verifies that a `variable` exists (is not equal to `undefined` or `null`)  
-- get_data_by_name: Loops through an array, and returns child object with matching `*.name`  
 - log: a helper function for `console.log` (especially usefull if linting rules forbid the use of `console.log`)  
 
 - navigate: method for navigating React routes  
