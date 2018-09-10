@@ -2,15 +2,17 @@
 import utils from '../utils'
 
 // Clean up strings.
-function trim (value) {
+const trim = (value) => {
   if (!utils.exists(value)) {
-    return
+    return ''
   }
 
+  // Clean up.
   value = '' + value
   value = value.trim()
   value = value.replace(/\s+/g, ' ')
 
+  // Expose string.
   return value
 }
 

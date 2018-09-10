@@ -1,13 +1,14 @@
 // Returns 1 day, in milliseconds.
-function today (offset) {
-  const isValid = !isNaN(offset)
-
+const today = (offset) => {
+  // Get today.
   let day = new Date().getTime()
 
-  if (isValid) {
+  // Valid offset?
+  if (!isNaN(offset)) {
     day = day + (offset * 86400000)
   }
 
+  // Expose number.
   return day
 }
 

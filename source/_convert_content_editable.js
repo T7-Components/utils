@@ -1,7 +1,7 @@
 // Utility methods.
-import utils from './index'
+import utils from './'
 
-function convertContentEditable (e) {
+const convertContentEditable = (e = {}) => {
   const el = e.target
 
   // Check <tag> name.

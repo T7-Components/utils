@@ -1,18 +1,16 @@
-// Utility methods.
-import utils from '../utils'
-
-// Convert text, when "content editable" is focused.
-function convertContentFocus (e) {
+// Faux `placeholder="…"` handler.
+const placeholder = (e) => {
+  // Get element.
   const el = e.target
 
   // Get placeholder.
   let placeholder = el.getAttribute('placeholder')
-  placeholder = utils.trim(placeholder)
+  placeholder = placeholder.trim()
   placeholder = placeholder.replace(/\s+/g, ' ')
 
   // Get value.
   let value = el.innerHTML
-  value = utils.trim(value)
+  value = value.trim()
   value = value.replace(/\s+/g, ' ')
 
   // Is the value the placeholder?
@@ -22,4 +20,4 @@ function convertContentFocus (e) {
 }
 
 // Expose function.
-export default convertContentFocus
+export default placeholder

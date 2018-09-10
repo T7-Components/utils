@@ -4,7 +4,7 @@
   text into the `contenteditable` area on a page.
 */
 
-function convertToMarkup (value) {
+const convertToMarkup = (value = '') => {
   value = value.trim()
   value = value.replace(/>/g, '&gt;')
   value = value.replace(/</g, '&lt;')

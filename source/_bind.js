@@ -22,7 +22,7 @@
   ```
 */
 
-function bind (_this) {
+const bind = (_this = {}) => {
   // Build an array of methods.
   const methods = (
     Object.getOwnPropertyNames(
@@ -31,11 +31,13 @@ function bind (_this) {
   )
 
   // Bind `setState`.
-  _this.setState =
-  _this.setState.bind(_this)
+  if (_this.setState) {
+    _this.setState =
+      _this.setState.bind(_this)
+  }
 
   // Loop through method names.
-  methods.forEach(function (method) {
+  methods.forEach((method) => {
     // Ignore these.
     const ignore = {
       componentDidMount: true,
@@ -67,7 +69,7 @@ function bind (_this) {
     // Set `this` context.
     if (isValid) {
       _this[method] =
-      _this[method].bind(_this)
+        _this[method].bind(_this)
     }
   })
 }

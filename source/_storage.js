@@ -2,13 +2,13 @@
 // Flag for `localStorage` support.
 // ================================
 
-const flag = (function () {
+const flag = (() => {
   // Assume no support.
   let bool = false
 
   // Used in the `try`.
-  let key = 'TEST_KEY'
-  let val = 'TEST_VAL'
+  const key = 'TEST_KEY'
+  const val = 'TEST_VAL'
 
   // Rigorously test for support.
   try {
@@ -31,8 +31,8 @@ const flag = (function () {
 // =======================
 
 const cacheFallback = {
-  clear: function () {
-    for (let k in cache) {
+  clear: () => {
+    for (const k in cache) {
       if (cache.hasOwnProperty(k) && k !== 'clear') {
         delete cache[k]
       }
@@ -46,7 +46,7 @@ const cache = flag ? window.localStorage : cacheFallback
 // Cache: Clear key/value.
 // =======================
 
-function clear (key) {
+const clear = (key) => {
   cache.clear()
 }
 
@@ -54,7 +54,7 @@ function clear (key) {
 // Cache: Getter.
 // ==============
 
-function get (key) {
+const get = (key) => {
   let data = cache[key]
 
   // Exit, if no data.
@@ -77,7 +77,7 @@ function get (key) {
 // Cache: Setter.
 // ==============
 
-function set (key, data) {
+const set = (key, data) => {
   if (
     key === 'clear' ||
     key === 'getItem' ||
@@ -99,7 +99,7 @@ function set (key, data) {
 // Cache: Remove single item.
 // ==========================
 
-function remove (key) {
+const remove = (key) => {
   delete cache[key]
 }
 

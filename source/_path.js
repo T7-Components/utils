@@ -1,6 +1,4 @@
 /*
-  // Utilty method for generating React routes.
-
   // Used like so...
 
   const url = utils.path([
@@ -15,34 +13,29 @@
   '#/users/123/items/456'
 */
 
-// Dependencies.
-import { isArray } from 'lodash'
-
-// Utility methods.
-import utils from '../utils'
-
 // Helper to generate "#" URL.
-function path (x) {
-  if (!utils.exists(x)) {
+const path = (...args) => {
+  if (!args.length) {
     // Remove cache buster.
     return window.location.hash.split('?')[0]
   }
 
-  if (arguments.length > 1) {
-    // Convert to array.
-    x = Array.prototype.slice.call(arguments)
+  // Set in conditional.
+  let x
+
+  // Array passed in?
+  if (Array.isArray(args[0])) {
+    x = args[0].join('/')
+  } else {
+    x = args.join('/')
   }
 
-  if (isArray(x)) {
-    // Convert to string.
-    x = x.join('/')
-  }
-
-  x = '' + x
+  // Clean up.
   x = x.replace(/#/g, '')
   x = '#/' + x
   x = x.replace(/\/+/g, '/')
 
+  // Expose string.
   return x
 }
 

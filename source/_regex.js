@@ -1,16 +1,19 @@
-// Helper for regular expressions.
-function regex (x) {
-  // Escape the string.
-  function esc (str) {
-    return str.replace(/[-*+?.^$|{}()/[\]\\]/g, '\\$&')
-  }
+// Escape the string.
+const esc = (str = '') => {
+  return str.replace(/[-*+?.^$|{}()/[\]\\]/g, '\\$&')
+}
 
+// Helper for regular expressions.
+const regex = (x = '') => {
   // Used later.
   let arr
   let value
 
   // Is it an array?
-  const isArray = typeof x === 'object' && x.length
+  const isArray = (
+    typeof x === 'object' &&
+    x.length
+  )
 
   // Is it an array?
   if (isArray) {

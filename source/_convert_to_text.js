@@ -3,7 +3,7 @@
   `.innerHTML` value, while the user is typing.
 */
 
-function convertToText (value) {
+const convertToText = (value) => {
   // Convert `&amp` to `&`.
   value = value.replace(/&amp/gi, '&')
 

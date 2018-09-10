@@ -1,18 +1,20 @@
+// Utility methods.
+import utils from './'
+
 /*
   You would call this when a user pastes from
   the clipboard into a `contenteditable` area.
 */
-
-function convertOnPaste (e) {
+const convertOnPaste = (e = {}) => {
   // Prevent paste.
-  e.preventDefault()
+  utils.stop(e)
 
   /*
     Used if the browser doesn't allow us
     to intercept the `on paste` event.
   */
-  function fallback (e) {
-    window.setTimeout(function () {
+  const fallback = (e) => {
+    window.setTimeout(() => {
       const el = e.target
 
       let value
@@ -21,7 +23,7 @@ function convertOnPaste (e) {
       value = value.replace(/\s+/g, ' ')
 
       el.innerText = value
-    }, 16)
+    }, 0)
   }
 
   // Used in conditional.
