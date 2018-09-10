@@ -1,5 +1,5 @@
 // Utility methods.
-import utils from '../utils'
+import utils from './'
 
 // Convert text, when "content editable" is focused.
 const convertContentFocus = (e = {}) => {

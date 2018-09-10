@@ -17,15 +17,15 @@ const title = (str = '') => {
     suffix = t.getAttribute('data-suffix')
   }
 
-  // Is there a title?
-  if (str) {
+  // Title and suffix?
+  if (str && suffix) {
     str = [
       str,
       suffix
     ].join(' | ')
 
   // If no title exists.
-  } else {
+  } else if (!str) {
     str = suffix
   }
 

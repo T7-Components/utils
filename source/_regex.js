@@ -10,14 +10,9 @@ const regex = (x = '') => {
   let value
 
   // Is it an array?
-  const isArray = (
-    typeof x === 'object' &&
-    x.length
-  )
-
-  // Is it an array?
-  if (isArray) {
+  if (Array.isArray(x)) {
     arr = []
+
     let i = x.length
 
     while (i--) {

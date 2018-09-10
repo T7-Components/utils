@@ -2,7 +2,7 @@
 // Flag for `localStorage` support.
 // ================================
 
-const flag = (() => {
+const hasStorageSupport = (() => {
   // Assume no support.
   let bool = false
 
@@ -32,21 +32,28 @@ const flag = (() => {
 
 const cacheFallback = {
   clear: () => {
-    for (const k in cache) {
-      if (cache.hasOwnProperty(k) && k !== 'clear') {
-        delete cache[k]
+    for (const key in cache) {
+      if (
+        key !== 'clear' &&
+        cache.hasOwnProperty(key)
+      ) {
+        delete cache[key]
       }
     }
   }
 }
 
-const cache = flag ? window.localStorage : cacheFallback
+const cache = (
+  hasStorageSupport
+    ? window.localStorage
+    : cacheFallback
+)
 
 // =======================
 // Cache: Clear key/value.
 // =======================
 
-const clear = (key) => {
+const clear = () => {
   cache.clear()
 }
 
@@ -81,10 +88,13 @@ const set = (key, data) => {
   if (
     key === 'clear' ||
     key === 'getItem' ||
+    key === 'key' ||
+    key === 'length' ||
+    key === 'removeItem' ||
     key === 'setItem'
   ) {
     throw new Error(
-      'Cannot overwrite method: window.localStorage.' + key
+      'Cannot overwrite: window.localStorage.' + key
     )
   }
 
@@ -108,10 +118,10 @@ const remove = (key) => {
 // ==============
 
 const storage = {
-  clear: clear,
-  get: get,
-  remove: remove,
-  set: set
+  clear,
+  get,
+  remove,
+  set
 }
 
 // Expose methods.

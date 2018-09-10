@@ -6,7 +6,6 @@ import convertOnPaste from './_convert_on_paste'
 import convertToMarkup from './_convert_to_markup'
 import convertToText from './_convert_to_text'
 import exists from './_exists'
-import getDataByName from './_get_data_by_name'
 import navigate from './_navigate'
 import parseFormData from './_parse_form_data'
 import path from './_path'
@@ -51,7 +50,6 @@ export {
   convertToMarkup,
   convertToText,
   exists,
-  getDataByName,
   navigate,
   parseFormData,
   path,

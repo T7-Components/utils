@@ -1,5 +1,5 @@
 // Utility methods.
-import utils from '../utils'
+import utils from './'
 
 // Clean up strings.
 const trim = (value) => {

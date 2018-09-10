@@ -4,7 +4,7 @@
 */
 
 // Utility methods.
-import utils from '../utils'
+import utils from './'
 
 const parseFormData = (form) => {
   // Array method.
