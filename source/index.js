@@ -9,7 +9,6 @@ import exists from './_exists'
 import navigate from './_navigate'
 import parseFormData from './_parse_form_data'
 import path from './_path'
-import placeholder from './_placeholder'
 import regex from './_regex'
 import save from './_save'
 import stop from './_stop'
@@ -31,7 +30,6 @@ const utils = {
   navigate,
   parseFormData,
   path,
-  placeholder,
   regex,
   save,
   stop,
@@ -53,7 +51,6 @@ export {
   navigate,
   parseFormData,
   path,
-  placeholder,
   regex,
   save,
   stop,

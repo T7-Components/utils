@@ -13,6 +13,7 @@ const convertToMarkup = (value = '') => {
   value = value.replace(/\n/g, '<br>')
   value = value.replace(/\s+/g, ' ')
 
+  // Expose string.
   return value
 }
 
