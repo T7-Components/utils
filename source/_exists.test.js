@@ -3,11 +3,11 @@ import utils from './'
 
 // Describe test.
 describe('utils.exists', () => {
-  // ========================
-  // Test for "truthy" value.
-  // ========================
+  // ===========================
+  // Test for "existing" values.
+  // ===========================
 
-  it('handles "truthy" value', () => {
+  it('handles "existing" values', () => {
     expect(utils.exists(0))
       .toBe(true)
 
@@ -23,6 +23,9 @@ describe('utils.exists', () => {
     expect(utils.exists(false))
       .toBe(true)
 
+    expect(utils.exists(NaN))
+      .toBe(true)
+
     expect(utils.exists(''))
       .toBe(true)
 
@@ -33,6 +36,9 @@ describe('utils.exists', () => {
       .toBe(true)
 
     expect(utils.exists({}))
+      .toBe(true)
+
+    expect(utils.exists(() => {}))
       .toBe(true)
   })
 
