@@ -3,21 +3,22 @@ import utils from './'
 
 // Convert text, when "content editable" is focused.
 const convertContentFocus = (e = {}) => {
-  const el = e.target
-
-  // Get placeholder.
-  let placeholder = el.getAttribute('placeholder')
-  placeholder = utils.trim(placeholder)
-  placeholder = placeholder.replace(/\s+/g, ' ')
+  // Get target.
+  const {
+    target = {}
+  } = e
 
   // Get value.
-  let value = el.innerHTML
+  let value = target.innerHTML
   value = utils.trim(value)
-  value = value.replace(/\s+/g, ' ')
+
+  // Get placeholder.
+  let placeholder = target.getAttribute('placeholder')
+  placeholder = utils.trim(placeholder)
 
   // Is the value the placeholder?
   if (value === placeholder) {
-    el.innerHTML = ''
+    target.innerHTML = ''
   }
 }
 

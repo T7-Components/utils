@@ -9,20 +9,23 @@ const convertOnPaste = (e = {}) => {
   // Prevent paste.
   utils.stop(e)
 
+  // Get target.
+  const { target } = e
+
   /*
     Used if the browser doesn't allow us
-    to intercept the `on paste` event.
+    to intercept the live `paste` event.
   */
-  const fallback = (e) => {
+  const fallback = () => {
     window.setTimeout(() => {
-      const el = e.target
+      // Get value.
+      let value = target.innerText
 
-      let value
-      value = el.innerText
-      value = value.trim()
-      value = value.replace(/\s+/g, ' ')
+      // Trim.
+      value = utils.trim(value)
 
-      el.innerText = value
+      // Update text.
+      target.innerText = value
     }, 0)
   }
 
@@ -40,7 +43,7 @@ const convertOnPaste = (e = {}) => {
   // No value?
   if (!value) {
     // Use fallback.
-    fallback(e)
+    fallback()
 
     // Exit.
     return

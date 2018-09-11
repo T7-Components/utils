@@ -1,50 +1,38 @@
 // Utility methods.
 import utils from './'
 
+/*
+  This event converts `contenteditable="true"`
+  content into plain text, and back into HTML.
+*/
 const convertContentEditable = (e = {}) => {
-  const el = e.target
+  // Get target.
+  const {
+    type,
+    target = {}
+  } = e
 
-  // Check <tag> name.
-  const tagName = el.tagName.toLowerCase()
-  const isSpan = tagName === 'span'
-  const isDiv = tagName === 'div'
-
-  // Get placeholder.
-  let placeholder = el.getAttribute('placeholder')
-  placeholder = placeholder.trim()
-  placeholder = placeholder.replace(/\s+/g, ' ')
+  // Event type.
+  const isBlur = type === 'blur'
 
   // Used in conditional.
-  let value
+  let value = target.innerHTML
+  value = utils.convertToText(value)
 
-  if (isSpan) {
-    value = el.innerText
-    value = value.trim()
-    value = value.replace(/\s+/g, ' ')
-  } else if (isDiv) {
-    value = el.innerHTML
-    value = value.trim()
-    value = utils.convertToText(value)
-  }
+  // Get placeholder.
+  let placeholder = target.getAttribute('placeholder')
+  placeholder = utils.trim(placeholder)
 
-  // Check event and key.
-  const isBlur = e.type === 'blur'
-  const isEnter = e.keyCode === 13
+  // Placeholder fallback.
+  value = (
+    value ||
+    placeholder
+  )
 
-  // Flag for replacement.
-  const doReplaceInline = isSpan && (isBlur || isEnter)
-  const doReplaceBlock = isDiv && isBlur
-
-  // Use placeholder, if no value.
-  value = value || placeholder
-
-  // Replace, if need be.
-  if (doReplaceInline) {
-    el.innerHTML = value
-  } else if (doReplaceBlock) {
+  // Blur event?
+  if (isBlur) {
     value = utils.convertToMarkup(value)
-
-    el.innerHTML = value
+    target.innerHTML = value
   }
 }
 
