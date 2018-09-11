@@ -19,6 +19,7 @@
   },
   "scripts": {
     "clean": "rimraf dist",
+    "pretranspile": "npm run test",
     "transpile": "babel source -d dist",
     "prepublishOnly": "npm run transpile",
     "lint": "eslint 'source/**/*.js' --fix",

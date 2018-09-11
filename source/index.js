@@ -40,6 +40,7 @@ const utils = {
   unique
 }
 
+// Allow individual `import`.
 export {
   bind,
   convertContentEditable,
