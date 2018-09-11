@@ -14,9 +14,9 @@ Or, individual utilities can be imported as needed to keep the production code b
 import { exists } from '@t7/utils'
 ```
 
----
-
 ## Available utilities:
+
+---
 
 `utils.bind` - A helper to bind React `class` methods, rather than typing `this.foo = this.foo.bind(this)` reatedly.
 
