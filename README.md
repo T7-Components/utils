@@ -65,7 +65,24 @@ Used within `utils.convertContentEditable` to strip "rich text" formatting, and 
 
 ### `utils.exists`
 
-Used to verify that a variable exists. For example: `''` and `0` pass, but `undefined` and `null` do not.
+Used to ensure that a variable exists. For example: `''` and `0` pass, but `undefined` and `null` do not.
+
+```
+// Yields: `true`.
+utils.exists(0)
+
+// Yields: `true`.
+utils.exists('')
+
+// Yields: `true`.
+utils.exists(false)
+
+// Yields: `false`.
+utils.exists(null)
+
+// Yields: `false`.
+utils.exists(undefined)
+```
 
 ---
 
