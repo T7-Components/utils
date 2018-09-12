@@ -1,5 +1,9 @@
 # @t7/utils
 
+```
+npm install @t7/utils --save-dev
+```
+
 https://www.npmjs.com/package/@t7/utils
 
 T7's "utils" is a collection of utilities that have been curated from multiple projects to perform simple targeted tasks.
