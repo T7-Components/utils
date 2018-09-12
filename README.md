@@ -16,7 +16,7 @@ import { exists } from '@t7/utils'
 
 ## Available utilities:
 
-`utils.bind`
+###### `utils.bind`
 
 A helper to bind React `class` methods, rather than typing `this.foo = this.foo.bind(this)` reatedly.
 
@@ -66,6 +66,8 @@ This will take parameters, or an array, and redirect to a URL hash.
 // Redirects to: "#/users/A1B2C3".
 utils.navigate('users', userID)
 ```
+
+---
 
 `utils.path`
 
