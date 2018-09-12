@@ -258,7 +258,7 @@ utils.trim('  A  B  C  ')
 
 ### `utils.unique`
 
-This generates a unique string. It can be helpful when attempting to have a matching `<label for="…">` and `<input id="…">` where the actual value doesn't matter, as long as the two are correlated for accessibility.
+This generates a unique string. It can be helpful when attempting to have a matching `<label for="…">` and `<input id="…">` where the actual string doesn't matter, as long as the two are correlated for accessibility.
 
 ```
 render () {
