@@ -1,4 +1,6 @@
-# utils
+# @t7/utils
+
+https://www.npmjs.com/package/@t7/utils
 
 T7's "utils" is a collection of utilities that have been currated from multiple projects to perform simple targeted tasks.
 
