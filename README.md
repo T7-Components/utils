@@ -136,7 +136,7 @@ console.log(formData)
 
 ### `utils.regex`
 
-Helper function to "escape" a string or an array of strings, so that one need not have all special character cases memorized.
+Helper function to "escape" a string or an array of strings, so that one need not memorize all special character cases.
 
 ---
 
@@ -144,11 +144,29 @@ Helper function to "escape" a string or an array of strings, so that one need no
 
 Allows you to save data to a `*.json` file that would otherwise be cumbersome to traverse via `console.log`.
 
+```
+const data = {
+  foo: 1,
+  bar: 1
+}
+
+// Causes a file download.
+utils.save(data, 'file_name.json')
+```
+
 ---
 
 ### `utils.stop`
 
 This will call `*.preventDefault` and `*.stopPropagation` on an event, if they exist.
+
+```
+handleClick (e) {
+  utils.stop(e)
+
+  // Etc.
+}
+```
 
 ---
 
@@ -231,8 +249,34 @@ utils.today(+1)
 
 This method will do a typical `string.trim()` but will also replace continuous spaces with a single space. This is helpful for cleaning up strings that are going into markup, where more than one space is treated as a single space anyway.
 
+```
+// Yields: "A B C".
+utils.trim('  A  B  C  ')
+```
+
 ---
 
 ### `utils.unique`
 
 This generates a unique string. It can be helpful when attempting to have a matching `<label for="…">` and `<input id="…">` where the actual value doesn't matter, as long as the two are correlated for accessibility.
+
+```
+render () {
+  // Yields: "1536711203446_28184486614563675"
+  const id = utils.unique()
+
+  return (
+    <p>
+      <label htmlFor={id}>
+        First name
+      </label>
+      <input
+        id={id}
+        type='text'
+        name='firstName'
+        value={firstName}
+      />
+    </p>
+  )
+}
+```
