@@ -138,6 +138,13 @@ console.log(formData)
 
 Helper function to "escape" a string or an array of strings, so that one need not memorize all special character cases.
 
+```
+const r = utils.regex('Hello world. What?')
+
+// Yields: /Hello world\. What\?/g
+console.log(r)
+```
+
 ---
 
 ### `utils.save`
