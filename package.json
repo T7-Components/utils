@@ -14,7 +14,7 @@
   ],
   "jest": {
     "collectCoverageFrom": [
-      "**/source/*.js"
+      "**/source/**.js"
     ]
   },
   "scripts": {
