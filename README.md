@@ -22,6 +22,15 @@ import { exists } from '@t7/utils'
 
 A helper to bind React `class` methods, rather than typing `this.foo = this.foo.bind(this)` reatedly.
 
+```
+constructor (props) {
+  super(props)
+
+  // Bind context.
+  utils.bind(this)
+}
+```
+
 ---
 
 ### `utils.convertContentEditable`
