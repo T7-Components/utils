@@ -53,7 +53,7 @@ Handles an `onPaste` event in `[contenteditable="true"]`, changes pasted text in
 
 ### `utils.convertToMarkup`
 
-Used within `utils.convertContentEditable` to sanitize HTML content into a simpler `<textarea>` type format.
+Used within `utils.convertContentEditable` to sanitize HTML content into a simpler `<textarea>` textual format.
 
 ---
 
