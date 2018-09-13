@@ -9,14 +9,23 @@ const contentOnFocus = (e = {}) => {
   } = e
 
   // Get value.
-  let value = target.innerHTML
+  let {
+    innerHTML: value
+  } = target
+
   value = trim(value)
 
-  // Get placeholder.
-  let placeholder = target.getAttribute('placeholder')
-  placeholder = trim(placeholder)
+  // Set in conditional.
+  let placeholder = ''
 
-  // Is the value the placeholder?
+  // Get placeholder.
+  if (typeof target.getAttribute === 'function') {
+    placeholder = trim(
+      target.getAttribute('placeholder')
+    )
+  }
+
+  // Value is placeholder?
   if (value === placeholder) {
     target.innerHTML = ''
   }
