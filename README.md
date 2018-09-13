@@ -1,36 +1,304 @@
-# utils
+# @t7/utils
 
-"utils" is a collection of utilities that have been currated from multiple projects to perform simple targeted tasks.
+```
+npm install @t7/utils --save-dev
+```
 
-The entire library can be imported (`import utils from 'utils'`) or individual utilities can be imported as needed to keep production code bases as small as possible (`import { ajax, log } from 'utils'`).
+https://www.npmjs.com/package/@t7/utils
 
+T7's "utils" is a collection of utilities that have been curated from multiple projects to perform simple targeted tasks.
 
-Available utilities:
-- bind: bind is a ReactJs specific utility that will bind all inline functions withing a module to the "this" context.  
-eg. `utils.bind()` vs `myfunction = this.myfunction.bind(this)`  
-- convert_content-editable: dynaically applies the `contentEditable` attribute to an HTML element  
+The entire library can be imported…
 
-- convert_content_focused: converts text, when "content editable" is focused  
-- convert_on_paste: converts text to `contentEditable` format when pasted from clipboard  
+```
+import utils from '@t7/utils'
+```
 
-- convert_to_markup: converts plain text received from an API call for use in a `contentEditable` area  
-- convert_to_text: convert innerHTML content to plain text  
-- exists: verifies that a `variable` exists (is not equal to `undefined` or `null`)  
-- log: a helper function for `console.log` (especially usefull if linting rules forbid the use of `console.log`)  
+Or, individual utilities can be imported as needed to keep the production code base as small as possible…
 
-- navigate: method for navigating React routes  
-eg. `utils.navigate([ 'users', userId, 'items', itemId ])`  
+```
+import { exists } from '@t7/utils'
+```
 
-- parse_form_data: Parses all inputs in a `<form>` and returns a formatted object  
+## Available utilities:
 
-- path: generate React routes  
-eg. `const url = utils.path(['users', userId, 'items', itemId`  
-- placeholder: a "faux" placeholder  
-- regex: a helper function to "escape" a string or an array of strings  
-- save: allows you to save data as a `console.json` file (similar to `npm` package `console.json`)  
-- stop: calls `preventDefault` and `stopPropagation` for event callback functions  
-- storage: provides `get`, `set` and `clear` functions for `localStorage`  
-- title: dynamically constructs/assignes a page title  
-- today: returns 1 day, in milliseconds  
-- trim: helper for JavaScript `trim` function (ensures that the value is a valid string)  
-- unique: helper to return a unique string (useful for generating unique keys)  
+### `utils.bind`
+
+A helper to bind React `class` methods, rather than typing `this.foo = this.foo.bind(this)` repeatedly.
+
+```
+constructor (props) {
+  super(props)
+
+  // Bind context.
+  utils.bind(this)
+}
+```
+
+---
+
+### `utils.contentOnChange`
+
+Handles an `onChange` event in `[contenteditable="true"]`, normalizing browser inconsistencies in the HTML.
+
+---
+
+### `utils.contentOnFocus`
+
+Handles an `onFocus` event in `[contenteditable="true"]`, clearing out `placeholder="…"` content.
+
+---
+
+### `utils.contentOnPaste`
+
+Handles an `onPaste` event in `[contenteditable="true"]`, changes pasted text into `<br>` separated new lines.
+
+---
+
+### `utils.contentToMarkup`
+
+Used within `utils.contentOnChange` to sanitize HTML content into a simpler `<textarea>` textual format.
+
+---
+
+### `utils.contentToText`
+
+Used within `utils.contentOnChange` to strip "rich text" formatting, and ensure consistent HTML output.
+
+---
+
+### `utils.exists`
+
+Used to ensure that a variable exists. For example: `''` and `0` pass, but `undefined` and `null` do not.
+
+```
+// Yields: `true`.
+utils.exists(0)
+
+// Yields: `true`.
+utils.exists('')
+
+// Yields: `true`.
+utils.exists(false)
+
+// Yields: `false`.
+utils.exists(null)
+
+// Yields: `false`.
+utils.exists(undefined)
+```
+
+---
+
+### `utils.navigate`
+
+This will take parameters, or an array, and redirect to a URL hash.
+
+```
+// Redirects to: "#/users/A1B2C3".
+utils.navigate('users', userID)
+```
+
+---
+
+### `utils.path`
+
+This will take parameters, or an array, and return a URL hash. It is used internally by `utils.navigate`.
+
+```
+// Yields string: "#/users/A1B2C3".
+utils.path('users', userID)
+```
+
+---
+
+### `utils.parseFormData`
+
+This will harvest all inputs in a `<form>` by their `name="…"` and return an array of objects representing their data. It will skip elements that are `disabled`.
+
+```
+const formData = utils.parseFormData(form)
+
+/*
+  [
+    {
+      name: 'input_id',
+      value: 'text here'
+    },
+    {
+      name: 'checkbox_id',
+      value: 'checkbox value',
+      checked: true
+    }
+  ]
+*/
+
+console.log(formData)
+```
+
+---
+
+### `utils.regex`
+
+Helper function to "escape" a string or an array of strings, so that one need not memorize all special character cases.
+
+```
+const r = utils.regex('Hello world. What?')
+
+// Yields: /Hello world\. What\?/g
+console.log(r)
+```
+
+---
+
+### `utils.save`
+
+Allows you to save data to a `*.json` file that would otherwise be cumbersome to traverse via `console.log`.
+
+```
+const data = {
+  foo: 1,
+  bar: 1
+}
+
+// Causes a file download.
+utils.save(data, 'file_name.json')
+```
+
+---
+
+### `utils.stop`
+
+This will call `*.preventDefault` and `*.stopPropagation` on an event, if they exist.
+
+```
+handleClick (e) {
+  utils.stop(e)
+
+  // Etc.
+}
+```
+
+---
+
+### `utils.storage`
+
+This provides a proxy to `localStorage` and falls back to an in-memory object if it's not supported. For instance, older versions of Safari in private browing mode would report support for `localStorage` but wouldn't actually work correctly in practice. By contrast, `utils.storage.get` works regardless.
+
+It also retrieves data as the correct type, whereas getting and setting directly with `localStorage` only uses strings.
+
+```
+// Setting a number `1`.
+localStorage.setItem('foo', 1)
+
+// Returns a string of "1".
+localStorage.getItem('foo')
+
+// Setting a number `1`.
+utils.storage.set('foo', 1)
+
+// Returns a number `1`.
+utils.storage.get('foo')
+```
+
+Functionally, the `clear` and `remove` methods are the same.
+
+```
+// Functionally identical.
+localStorage.removeItem('foo')
+utils.storage.remove('foo')
+```
+
+```
+// Functionally identical.
+localStorage.clear()
+utils.storage.clear()
+```
+
+---
+
+### `utils.title`
+
+This dynamically sets the page title. This can be helpful in React apps, where the `<head>` of a parent page is not directly in the React render tree. It will optionally read from `<title data-suffix="…">` to append a site name, etc.
+
+```
+// With this HTML:
+<title data-suffix="ACME Inc."></title>
+
+// Running this:
+utils.title('About Us')
+
+// Yields this:
+<title data-suffix="ACME Inc.">
+About Us | ACME Inc.
+</title>
+```
+
+---
+
+### `utils.today`
+
+This method returns "today" in milliseconds, if called without an argument. If a non-zero number is passed, it will provide an offset from today.
+
+```
+// Today.
+utils.today()
+
+// Also today.
+utils.today(0)
+
+// Yesterday.
+utils.today(-1)
+
+// Tomorrow.
+utils.today(+1)
+```
+
+---
+
+### `utils.trim`
+
+This method will do a typical `string.trim()` but will also replace continuous spaces with a single space. This is helpful for cleaning up strings that are going into markup, where more than one space is treated as a single space anyway.
+
+```
+// Yields: "FOO BAR".
+utils.trim(' FOO  BAR ')
+```
+
+---
+
+### `utils.trimMultiLine`
+
+This method will trim a multi-line string, as one might encounter within a `<textarea>`. It will remove unnecessary spaces, but will preserve up to two new line `\n\n` characters. This allows for a visual "paragraph" to be retained.
+
+```
+// Yields: "FOO \n\n BAR".
+utils.trimMultiLine(' FOO  \n  \n  BAR ')
+```
+
+---
+
+### `utils.unique`
+
+This generates a unique string. It can be helpful when attempting to have a matching `<label for="…">` and `<input id="…">` where the actual string doesn't matter, as long as the two are correlated for accessibility.
+
+```
+render () {
+  // Yields: "1536711203446_28184486614563675"
+  const id = utils.unique()
+
+  return (
+    <p>
+      <label htmlFor={id}>
+        First name
+      </label>
+      <input
+        id={id}
+        type='text'
+        name='firstName'
+        value={firstName}
+      />
+    </p>
+  )
+}
+```

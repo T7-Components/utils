@@ -1,8 +1,8 @@
-// Utility methods.
-import utils from './'
+// Dependencies.
+import { stop } from './'
 
 // Describe test.
-describe('utils.stop', () => {
+describe('stop', () => {
   // ======================
   // Test for "stop" event.
   // ======================
@@ -15,7 +15,7 @@ describe('utils.stop', () => {
     }
 
     // Fire event.
-    utils.stop(event)
+    stop(event)
 
     expect(event.preventDefault)
       .toBeCalled()

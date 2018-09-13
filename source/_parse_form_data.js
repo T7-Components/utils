@@ -3,8 +3,8 @@
   and returns a formatted object.
 */
 
-// Utility methods.
-import utils from './'
+// Dependencies.
+import { contentToText } from './'
 
 const parseFormData = (form) => {
   // Array method.
@@ -56,7 +56,7 @@ const parseFormData = (form) => {
 
       // Get value.
       value =
-        utils.convertToText(el.innerHTML)
+        contentToText(el.innerHTML)
 
       // Ensure value isn't placeholder.
       if (value === placeholder) {

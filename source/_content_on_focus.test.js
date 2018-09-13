@@ -1,8 +1,8 @@
-// Utility methods.
-import utils from './'
+// Dependencies.
+import { contentOnFocus } from './'
 
 // Describe test.
-describe('utils.convertContentFocus', () => {
+describe('contentOnFocus', () => {
   // =============
   // Dummy values.
   // =============
@@ -30,7 +30,7 @@ describe('utils.convertContentFocus', () => {
 
   it('handles `edit` event', () => {
     // Fire event.
-    utils.convertContentFocus(event)
+    contentOnFocus(event)
 
     expect(event.target.innerHTML)
       .toBe('')

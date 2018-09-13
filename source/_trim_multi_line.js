@@ -3,12 +3,12 @@ import { exists } from './'
 
 /*
   This method cleans up a
-  "single line" string, as
+  "multi-line" string, as
   might be used within:
 
-  `<input value="…">`
+  `<textarea>`
 */
-const trim = (value) => {
+const trimMultiLine = (value) => {
   if (!exists(value)) {
     return ''
   }
@@ -18,11 +18,17 @@ const trim = (value) => {
 
   // Remove extra spaces.
   value = value.trim()
-  value = value.replace(/\s+/g, ' ')
+  value = value.replace(/[ ]+/g, ' ')
+
+  // Mix of newlines, spaces.
+  value = value.replace(/\n+\s+\n+/g, '\n\n')
+
+  // Continuous newlines.
+  value = value.replace(/\n\n+/g, '\n\n')
 
   // Expose string.
   return value
 }
 
 // Expose function.
-export default trim
+export default trimMultiLine

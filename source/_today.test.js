@@ -1,54 +1,46 @@
-// Utility methods.
-import utils from './'
+// Dependencies.
+import { today } from './'
 
 // Describe test.
-describe('utils.today', () => {
+describe('today', () => {
   // One day, in milliseconds.
   const oneDay = 86400000
 
   // =======================
-  // Test for "today" value.
+  // Test for "TODAY" value.
   // =======================
 
-  it('handles "today" value', () => {
-    const isEqual = (
-      utils.today() ===
-        new Date().getTime()
-    )
+  it('handles "TODAY" value', () => {
+    const TODAY = today()
+    const NOW = new Date().getTime()
 
-    expect(isEqual)
+    expect(NOW >= TODAY)
       .toBe(true)
   })
 
   // ===========================
-  // Test for "yesterday" value.
+  // Test for "YESTERDAY" value.
   // ===========================
 
-  it('handles "yesterday" value', () => {
-    const today = utils.today()
-    const yesterday = utils.today(-1)
-    const diff = today - yesterday
+  it('handles "YESTERDAY" value', () => {
+    const TODAY = today()
+    const YESTERDAY = today(-1)
+    const diff = TODAY - YESTERDAY
 
-    expect(today)
-      .toBeGreaterThan(yesterday)
-
-    expect(diff === oneDay)
+    expect(diff >= oneDay)
       .toBe(true)
   })
 
   // ==========================
-  // Test for "tomorrow" value.
+  // Test for "TOMORROW" value.
   // ==========================
 
-  it('handles "tomorrow" value', () => {
-    const today = utils.today()
-    const tomorrow = utils.today(+1)
-    const diff = tomorrow - today
+  it('handles "TOMORROW" value', () => {
+    const TODAY = today()
+    const TOMORROW = today(+1)
+    const diff = TOMORROW - TODAY
 
-    expect(today)
-      .toBeLessThan(tomorrow)
-
-    expect(diff === oneDay)
+    expect(diff >= oneDay)
       .toBe(true)
   })
 })

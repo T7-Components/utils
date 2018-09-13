@@ -1,16 +1,16 @@
-// Utility methods.
-import utils from './'
+// Dependencies.
+import { regex } from './'
 
 // Describe test.
-describe('utils.regex', () => {
+describe('regex', () => {
   // ======================
   // Test for string value.
   // ======================
 
   it('handles string value', () => {
-    const regex = utils.regex('ABC?')
+    const r = regex('ABC?')
 
-    expect(regex)
+    expect(r)
       .toEqual(/ABC\?/g)
   })
 
@@ -19,12 +19,12 @@ describe('utils.regex', () => {
   // =====================
 
   it('handles array value', () => {
-    const regex = utils.regex([
+    const r = regex([
       'ABC?',
       'XYZ?'
     ])
 
-    expect(regex)
+    expect(r)
       .toEqual(/ABC\?|XYZ\?/g)
   })
 })

@@ -1,8 +1,8 @@
-// Utility methods.
-import utils from './'
+// Dependencies.
+import { save } from './'
 
 // Describe test.
-describe('utils.save', () => {
+describe('save', () => {
   // =============
   // Unhappy path.
   // =============
@@ -28,7 +28,7 @@ describe('utils.save', () => {
   })
 
   // Fire, for coverage.
-  utils.save()
+  save()
 
   // =============
   // Dummy values.
@@ -95,7 +95,7 @@ describe('utils.save', () => {
 
   it('handles "save" event', () => {
     // Fire event.
-    utils.save(EXAMPLE_DATA, EXAMPLE_NAME)
+    save(EXAMPLE_DATA, EXAMPLE_NAME)
 
     expect(JSON.parse(TRACKER.json))
       .toEqual(EXAMPLE_DATA)

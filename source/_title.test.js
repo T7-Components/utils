@@ -1,8 +1,8 @@
-// Utility methods.
-import utils from './'
+// Dependencies.
+import { title } from './'
 
 // Describe test.
-describe('utils.title', () => {
+describe('title', () => {
   // Dummy value.
   const TEST_TITLE = 'TEST_TITLE'
   const TEST_SUFFIX = 'TEST_SUFFIX'
@@ -31,7 +31,7 @@ describe('utils.title', () => {
   // ======================
 
   it('handles title change', () => {
-    utils.title(TEST_TITLE)
+    title(TEST_TITLE)
 
     expect(document.title)
       .toBe(TEST_TITLE)
@@ -44,7 +44,7 @@ describe('utils.title', () => {
   it('handles title with suffix', () => {
     setSuffix()
 
-    utils.title(TEST_TITLE)
+    title(TEST_TITLE)
 
     expect(document.title)
       .toBe(
@@ -62,7 +62,7 @@ describe('utils.title', () => {
   it('handles suffix fallback', () => {
     setSuffix()
 
-    utils.title()
+    title()
 
     expect(document.title)
       .toBe(TEST_SUFFIX)
