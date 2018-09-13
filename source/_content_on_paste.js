@@ -5,6 +5,25 @@ import {
 } from './'
 
 /*
+  Used if the browser doesn't allow us
+  to intercept the live `paste` event.
+*/
+const fallback = (target = {}) => {
+  window.setTimeout(() => {
+    // Get value.
+    let {
+      innerText = ''
+    } = target
+
+    // Trim.
+    innerText = trimMultiLine(innerText)
+
+    // Update text.
+    target.innerText = innerText
+  }, 0)
+}
+
+/*
   You would call this when a user pastes from
   the clipboard into a `contenteditable` area.
 */
@@ -15,38 +34,28 @@ const contentOnPaste = (e = {}) => {
   // Get target.
   const { target } = e
 
-  /*
-    Used if the browser doesn't allow us
-    to intercept the live `paste` event.
-  */
-  const fallback = () => {
-    window.setTimeout(() => {
-      // Get value.
-      let value = target.innerText
-
-      // Trim.
-      value = trimMultiLine(value)
-
-      // Update text.
-      target.innerText = value
-    }, 0)
-  }
-
   // Used in conditional.
   let value
 
   // For IE.
-  if (window.clipboardData) {
+  if (
+    window.clipboardData &&
+    typeof window.clipboardData.getData === 'function'
+  ) {
     value = window.clipboardData.getData('text')
-  } else {
-    // Other browsers.
+
+  // Other browsers.
+  } else if (
+    e.clipboardData &&
+    typeof e.clipboardData.getData === 'function'
+  ) {
     value = e.clipboardData.getData('text/plain')
   }
 
   // No value?
   if (!value) {
     // Use fallback.
-    fallback()
+    fallback(target)
 
     // Exit.
     return
