@@ -19,17 +19,23 @@ const contentOnChange = (e = {}) => {
   // Event type.
   const isBlur = type === 'blur'
 
-  // Used in conditional.
-  let value = target.innerHTML
-  value = contentToText(value)
+  // Get value.
+  let {
+    innerHTML: value
+  } = target
+
+  // Set in conditional.
+  let placeholder = ''
 
   // Get placeholder.
-  let placeholder = target.getAttribute('placeholder')
-  placeholder = trim(placeholder)
+  if (typeof target.getAttribute === 'function') {
+    placeholder = trim(
+      target.getAttribute('placeholder')
+    )
+  }
 
-  // Placeholder fallback.
   value = (
-    value ||
+    contentToText(value) ||
     placeholder
   )
 
