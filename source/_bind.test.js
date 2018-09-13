@@ -1,8 +1,8 @@
-// Utility methods.
-import utils from './'
+// Dependencies.
+import { bind } from './'
 
 // Describe test.
-describe('utils.bind', () => {
+describe('bind', () => {
   // ============
   // Dummy class.
   // ============
@@ -28,7 +28,7 @@ describe('utils.bind', () => {
     const f = new F()
 
     // Fire event.
-    utils.bind(f)
+    bind(f)
 
     expect(F.prototype.example.bind)
       .toBeCalled()

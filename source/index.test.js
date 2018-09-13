@@ -16,7 +16,7 @@ describe('utils - index.js', () => {
       .toBe(true)
 
     // Test exports match.
-    expect(utils.exists)
+    expect(exists)
       .toBe(exists)
 
     // Loop through.

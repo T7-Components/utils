@@ -3,7 +3,7 @@
   `.innerHTML` value, while the user is typing.
 */
 
-const convertToText = (value = '') => {
+const contentToText = (value = '') => {
   // Convert `&amp;` to `&`.
   value = value.replace(/&amp;/gi, '&')
 
@@ -57,4 +57,4 @@ const convertToText = (value = '') => {
 }
 
 // Expose function.
-export default convertToText
+export default contentToText

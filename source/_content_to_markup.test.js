@@ -1,8 +1,8 @@
-// Utility methods.
-import utils from './'
+// Dependencies.
+import { contentToMarkup } from './'
 
 // Describe test.
-describe('utils.convertToMarkup', () => {
+describe('contentToMarkup', () => {
   // =============
   // Dummy values.
   // =============
@@ -20,7 +20,7 @@ describe('utils.convertToMarkup', () => {
   it('handles `edit` event', () => {
     // Fire event.
     const value =
-      utils.convertToMarkup(EXAMPLE_VALUE_HTML)
+      contentToMarkup(EXAMPLE_VALUE_HTML)
 
     expect(value)
       .toBe(EXAMPLE_VALUE_STRING)

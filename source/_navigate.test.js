@@ -1,14 +1,14 @@
-// Utility methods.
-import utils from './'
+// Dependencies.
+import { navigate } from './'
 
 // Describe test.
-describe('utils.navigate', () => {
+describe('navigate', () => {
   // ==========================
   // Test for "navigate" event.
   // ==========================
 
   it('handles "navigate" event', () => {
-    utils.navigate('TEST')
+    navigate('TEST')
 
     expect(window.location.hash)
       .toBe('#/TEST')

@@ -1,11 +1,15 @@
-// Utility methods.
-import utils from './'
+// Dependencies.
+import {
+  contentToText,
+  contentToMarkup,
+  trim
+} from './'
 
 /*
   This event converts `contenteditable="true"`
   content into plain text, and back into HTML.
 */
-const convertContentEditable = (e = {}) => {
+const contentOnChange = (e = {}) => {
   // Get target.
   const {
     type,
@@ -17,11 +21,11 @@ const convertContentEditable = (e = {}) => {
 
   // Used in conditional.
   let value = target.innerHTML
-  value = utils.convertToText(value)
+  value = contentToText(value)
 
   // Get placeholder.
   let placeholder = target.getAttribute('placeholder')
-  placeholder = utils.trim(placeholder)
+  placeholder = trim(placeholder)
 
   // Placeholder fallback.
   value = (
@@ -31,10 +35,10 @@ const convertContentEditable = (e = {}) => {
 
   // Blur event?
   if (isBlur) {
-    value = utils.convertToMarkup(value)
+    value = contentToMarkup(value)
     target.innerHTML = value
   }
 }
 
 // Expose function.
-export default convertContentEditable
+export default contentOnChange

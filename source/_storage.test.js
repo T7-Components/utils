@@ -1,8 +1,8 @@
-// Utility methods.
-import utils from './'
+// Dependencies.
+import { storage } from './'
 
 // Describe test.
-describe('utils.storage', () => {
+describe('storage', () => {
   // =========================
   // Test for `set` and `get`.
   // =========================
@@ -18,9 +18,9 @@ describe('utils.storage', () => {
     }
 
     // Set.
-    utils.storage.set(KEY, VALUE)
+    storage.set(KEY, VALUE)
 
-    expect(utils.storage.get(KEY))
+    expect(storage.get(KEY))
       .toEqual(VALUE)
   })
 
@@ -34,15 +34,15 @@ describe('utils.storage', () => {
     const VALUE = 'VALUE'
 
     // Set.
-    utils.storage.set(KEY, VALUE)
+    storage.set(KEY, VALUE)
 
-    expect(utils.storage.get(KEY))
+    expect(storage.get(KEY))
       .toBe(VALUE)
 
     // Remove.
-    utils.storage.remove(KEY)
+    storage.remove(KEY)
 
-    expect(utils.storage.get(KEY))
+    expect(storage.get(KEY))
       .toBe(undefined)
   })
 
@@ -58,22 +58,22 @@ describe('utils.storage', () => {
     const VALUE_2 = 'VALUE_2'
 
     // Set.
-    utils.storage.set(KEY_1, VALUE_1)
-    utils.storage.set(KEY_2, VALUE_2)
+    storage.set(KEY_1, VALUE_1)
+    storage.set(KEY_2, VALUE_2)
 
-    expect(utils.storage.get(KEY_1))
+    expect(storage.get(KEY_1))
       .toBe(VALUE_1)
 
-    expect(utils.storage.get(KEY_2))
+    expect(storage.get(KEY_2))
       .toBe(VALUE_2)
 
     // Clear.
-    utils.storage.clear()
+    storage.clear()
 
-    expect(utils.storage.get(KEY_1))
+    expect(storage.get(KEY_1))
       .toBe(undefined)
 
-    expect(utils.storage.get(KEY_2))
+    expect(storage.get(KEY_2))
       .toBe(undefined)
   })
 
@@ -86,27 +86,27 @@ describe('utils.storage', () => {
     const VALUE = 'VALUE'
 
     expect(() => {
-      utils.storage.set('clear', VALUE)
+      storage.set('clear', VALUE)
     }).toThrow()
 
     expect(() => {
-      utils.storage.set('getItem', VALUE)
+      storage.set('getItem', VALUE)
     }).toThrow()
 
     expect(() => {
-      utils.storage.set('key', VALUE)
+      storage.set('key', VALUE)
     }).toThrow()
 
     expect(() => {
-      utils.storage.set('length', VALUE)
+      storage.set('length', VALUE)
     }).toThrow()
 
     expect(() => {
-      utils.storage.set('removeItem', VALUE)
+      storage.set('removeItem', VALUE)
     }).toThrow()
 
     expect(() => {
-      utils.storage.set('setItem', VALUE)
+      storage.set('setItem', VALUE)
     }).toThrow()
   })
 })

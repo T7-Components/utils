@@ -1,13 +1,16 @@
-// Utility methods.
-import utils from './'
+// Dependencies.
+import {
+  contentToText,
+  trim
+} from './'
 
 // Describe test.
-describe('utils.convertToText', () => {
+describe('contentToText', () => {
   // =============
   // Dummy values.
   // =============
 
-  const EXAMPLE_VALUE_HTML = utils.trim(`
+  const EXAMPLE_VALUE_HTML = trim(`
     <b>
       <em>
         <i>
@@ -36,7 +39,7 @@ describe('utils.convertToText', () => {
   it('handles `edit` event', () => {
     // Fire event.
     const value =
-      utils.convertToText(EXAMPLE_VALUE_HTML)
+      contentToText(EXAMPLE_VALUE_HTML)
 
     expect(value)
       .toBe(EXAMPLE_VALUE_STRING)

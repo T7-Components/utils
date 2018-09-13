@@ -1,10 +1,10 @@
-// Utility methods.
-import utils from './'
+// Dependencies.
+import { path } from './'
 
 /*
   // Used like so...
 
-  utils.navigate([
+  navigate([
     'users',
     userId,
     'items',
@@ -19,7 +19,7 @@ import utils from './'
 // Helper for page navigation.
 const navigate = (...args) => {
   // Change hash.
-  window.location.hash = utils.path(args)
+  window.location.hash = path(args)
 }
 
 // Expose function.

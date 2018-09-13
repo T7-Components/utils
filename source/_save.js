@@ -6,7 +6,7 @@
 
   // Called like so…
 
-  utils.save(json, 'my_file_name.json')
+  save(json, 'my_file_name.json')
 
 */
 const save = (

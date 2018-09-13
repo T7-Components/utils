@@ -1,8 +1,8 @@
-// Utility methods.
-import utils from './'
+// Dependencies.
+import { parseFormData } from './'
 
 // Describe test.
-describe('utils.parseFormData', () => {
+describe('parseFormData', () => {
   // ============
   // Dummy names.
   // ============
@@ -169,7 +169,7 @@ describe('utils.parseFormData', () => {
 
   it('handles data output', () => {
     const data =
-      utils.parseFormData(form)
+      parseFormData(form)
 
     expect(data)
       .toEqual(DATA_RESULT)

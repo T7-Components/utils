@@ -19,11 +19,11 @@
 
 // Import all.
 import bind from './_bind'
-import convertContentEditable from './_convert_content_editable'
-import convertContentFocus from './_convert_content_focus'
-import convertOnPaste from './_convert_on_paste'
-import convertToMarkup from './_convert_to_markup'
-import convertToText from './_convert_to_text'
+import contentOnChange from './_content_on_change'
+import contentOnFocus from './_content_on_focus'
+import contentOnPaste from './_content_on_paste'
+import contentToMarkup from './_content_to_markup'
+import contentToText from './_content_to_text'
 import exists from './_exists'
 import navigate from './_navigate'
 import parseFormData from './_parse_form_data'
@@ -35,16 +35,17 @@ import storage from './_storage'
 import title from './_title'
 import today from './_today'
 import trim from './_trim'
+import trimMultiLine from './_trim_multi_line'
 import unique from './_unique'
 
 // Export all.
 export {
   bind,
-  convertContentEditable,
-  convertContentFocus,
-  convertOnPaste,
-  convertToMarkup,
-  convertToText,
+  contentOnChange,
+  contentOnFocus,
+  contentOnPaste,
+  contentToMarkup,
+  contentToText,
   exists,
   navigate,
   parseFormData,
@@ -56,5 +57,6 @@ export {
   title,
   today,
   trim,
+  trimMultiLine,
   unique
 }

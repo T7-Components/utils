@@ -4,7 +4,7 @@
   text into the `contenteditable` area on a page.
 */
 
-const convertToMarkup = (value = '') => {
+const contentToMarkup = (value = '') => {
   value = value.trim()
   value = value.replace(/>/g, '&gt;')
   value = value.replace(/</g, '&lt;')
@@ -18,4 +18,4 @@ const convertToMarkup = (value = '') => {
 }
 
 // Expose function.
-export default convertToMarkup
+export default contentToMarkup

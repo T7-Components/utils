@@ -1,8 +1,8 @@
-// Utility methods.
-import utils from './'
+// Dependencies.
+import { path } from './'
 
 // Describe test.
-describe('utils.path', () => {
+describe('path', () => {
   // ======
   // Reset.
   // ======
@@ -17,7 +17,7 @@ describe('utils.path', () => {
   // =====================
 
   it('handles blank value', () => {
-    const URL = utils.path()
+    const URL = path()
 
     expect(URL)
       .toBe('#/DEFAULT')
@@ -28,7 +28,7 @@ describe('utils.path', () => {
   // ======================
 
   it('handles string value', () => {
-    const URL = utils.path('TEST')
+    const URL = path('TEST')
 
     expect(URL)
       .toBe('#/TEST')
@@ -39,7 +39,7 @@ describe('utils.path', () => {
   // =====================
 
   it('handles array value', () => {
-    const URL = utils.path([
+    const URL = path([
       'UNO',
       'DOS'
     ])
@@ -53,7 +53,7 @@ describe('utils.path', () => {
   // ========================
 
   it('handles arguments list', () => {
-    const URL = utils.path(
+    const URL = path(
       'UNO',
       'DOS'
     )

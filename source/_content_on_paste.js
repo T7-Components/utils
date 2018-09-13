@@ -1,13 +1,16 @@
-// Utility methods.
-import utils from './'
+// Dependencies.
+import {
+  stop,
+  trimMultiLine
+} from './'
 
 /*
   You would call this when a user pastes from
   the clipboard into a `contenteditable` area.
 */
-const convertOnPaste = (e = {}) => {
+const contentOnPaste = (e = {}) => {
   // Prevent paste.
-  utils.stop(e)
+  stop(e)
 
   // Get target.
   const { target } = e
@@ -22,7 +25,7 @@ const convertOnPaste = (e = {}) => {
       let value = target.innerText
 
       // Trim.
-      value = utils.trim(value)
+      value = trimMultiLine(value)
 
       // Update text.
       target.innerText = value
@@ -54,15 +57,8 @@ const convertOnPaste = (e = {}) => {
   textarea.innerHTML = value
   value = textarea.innerText
 
-  // Literal spaces.
-  value = value.trim()
-  value = value.replace(/[ ]+/g, ' ')
-
-  // Mix of newlines, spaces.
-  value = value.replace(/\n+\s+\n+/g, '\n\n')
-
-  // Double newlines.
-  value = value.replace(/\n\n+/g, '\n\n')
+  // Clean up.
+  value = trimMultiLine(value)
 
   // For IE.
   if (document.selection) {
@@ -79,4 +75,4 @@ const convertOnPaste = (e = {}) => {
 }
 
 // Expose function.
-export default convertOnPaste
+export default contentOnPaste

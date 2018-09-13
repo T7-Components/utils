@@ -11,12 +11,12 @@
 
   ```
   import React from 'react'
-  import utils from './utils'
+  import { bind } from '@t7/utils'
 
   class Foo extends React.Component {
     constructor (props) {
       super(props)
-      utils.bind(this)
+      bind(this)
     }
   }
   ```

@@ -1,16 +1,16 @@
-// Utility methods.
-import utils from './'
+// Dependencies.
+import { unique } from './'
 
 // Describe test.
-describe('utils.unique', () => {
+describe('unique', () => {
   // ======================
   // Test for string value.
   // ======================
 
   it('generates a string value', () => {
     // Get values.
-    const value1 = utils.unique()
-    const value2 = utils.unique()
+    const value1 = unique()
+    const value2 = unique()
 
     // Has a separator?
     expect(value1)

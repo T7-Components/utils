@@ -1,7 +1,7 @@
 /*
   // Used like so...
 
-  const url = utils.path([
+  const url = path([
     'users',
     userId,
     'items',

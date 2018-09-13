@@ -1,11 +1,14 @@
-// Utility methods.
-import utils from './'
+// Dependencies.
+import {
+  contentOnPaste,
+  trimMultiLine
+} from './'
 
 // Fake timers.
 jest.useFakeTimers()
 
 // Describe test.
-describe('utils.convertOnPaste', () => {
+describe('contentOnPaste', () => {
   // ======
   // Reset.
   // ======
@@ -73,7 +76,7 @@ describe('utils.convertOnPaste', () => {
     const event = {}
 
     // Fire event.
-    utils.convertOnPaste(event)
+    contentOnPaste(event)
 
     expect(pasteHTML)
       .toBeCalledWith(
@@ -101,7 +104,7 @@ describe('utils.convertOnPaste', () => {
     }
 
     // Fire event.
-    utils.convertOnPaste(event)
+    contentOnPaste(event)
 
     expect(document.execCommand)
       .toBeCalledWith(
@@ -132,12 +135,12 @@ describe('utils.convertOnPaste', () => {
     }
 
     // Fire event.
-    utils.convertOnPaste(event)
+    contentOnPaste(event)
 
     // Fast-forward.
     jest.runOnlyPendingTimers()
 
     expect(event.target.innerText)
-      .toBe(utils.trim(EXAMPLE_VALUE))
+      .toBe(trimMultiLine(EXAMPLE_VALUE))
   })
 })

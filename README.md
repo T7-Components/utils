@@ -37,33 +37,33 @@ constructor (props) {
 
 ---
 
-### `utils.convertContentEditable`
+### `utils.contentOnChange`
 
 Handles an `onChange` event in `[contenteditable="true"]`, normalizing browser inconsistencies in the HTML.
 
 ---
 
-### `utils.convertContentFocused`
+### `utils.contentOnFocus`
 
 Handles an `onFocus` event in `[contenteditable="true"]`, clearing out `placeholder="…"` content.
 
 ---
 
-### `utils.convertOnPaste`
+### `utils.contentOnPaste`
 
 Handles an `onPaste` event in `[contenteditable="true"]`, changes pasted text into `<br>` separated new lines.
 
 ---
 
-### `utils.convertToMarkup`
+### `utils.contentToMarkup`
 
-Used within `utils.convertContentEditable` to sanitize HTML content into a simpler `<textarea>` textual format.
+Used within `utils.contentOnChange` to sanitize HTML content into a simpler `<textarea>` textual format.
 
 ---
 
-### `utils.convertToText`
+### `utils.contentToText`
 
-Used within `utils.convertContentEditable` to strip "rich text" formatting, and ensure consistent HTML output.
+Used within `utils.contentOnChange` to strip "rich text" formatting, and ensure consistent HTML output.
 
 ---
 
@@ -263,6 +263,40 @@ This method will do a typical `string.trim()` but will also replace continuous s
 ```
 // Yields: "A B C".
 utils.trim('  A  B  C  ')
+```
+
+---
+
+### `utils.trimMultiLine`
+
+This method will trim a multi-line string, as one might encounter within a `<textarea>`. It will remove unnecessary spaces, but will preserve up to two new line `\n\n` characters. This allows for a visual "paragraph" to be retained.
+
+```
+// Excess spaces.
+const BEFORE =
+`
+
+FOO
+
+
+BAR
+
+
+BAZ
+
+`
+
+// Trimmed spaces.
+const AFTER =
+`FOO
+
+BAR
+
+BAZ`
+
+// Yields: `true`.
+expect(utils.trimMultiLine(BEFORE))
+  .toBe(AFTER)
 ```
 
 ---

@@ -1,8 +1,8 @@
-// Utility methods.
-import utils from './'
+// Dependencies.
+import { contentOnChange } from './'
 
 // Describe test.
-describe('utils.convertContentEditable', () => {
+describe('contentOnChange', () => {
   // =============
   // Dummy values.
   // =============
@@ -33,7 +33,7 @@ describe('utils.convertContentEditable', () => {
 
   it('handles `edit` event', () => {
     // Fire event.
-    utils.convertContentEditable(event)
+    contentOnChange(event)
 
     expect(event.target.innerHTML)
       .toBe(DIV_HTML_PARSED)

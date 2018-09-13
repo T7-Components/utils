@@ -1,8 +1,8 @@
-// Utility methods.
-import utils from './'
+// Dependencies.
+import { trim } from './'
 
 // Convert text, when "content editable" is focused.
-const convertContentFocus = (e = {}) => {
+const contentOnFocus = (e = {}) => {
   // Get target.
   const {
     target = {}
@@ -10,11 +10,11 @@ const convertContentFocus = (e = {}) => {
 
   // Get value.
   let value = target.innerHTML
-  value = utils.trim(value)
+  value = trim(value)
 
   // Get placeholder.
   let placeholder = target.getAttribute('placeholder')
-  placeholder = utils.trim(placeholder)
+  placeholder = trim(placeholder)
 
   // Is the value the placeholder?
   if (value === placeholder) {
@@ -23,4 +23,4 @@ const convertContentFocus = (e = {}) => {
 }
 
 // Expose function.
-export default convertContentFocus
+export default contentOnFocus

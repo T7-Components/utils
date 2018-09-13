@@ -1,17 +1,17 @@
-// Utility methods.
-import utils from './'
+// Dependencies.
+import { trim } from './'
 
 // Describe test.
-describe('utils.trim', () => {
+describe('trim', () => {
   // ================================
   // Test for `null` and `undefined`.
   // ================================
 
   it('handles `null` and `undefined`', () => {
-    expect(utils.trim(null))
+    expect(trim(null))
       .toBe('')
 
-    expect(utils.trim(undefined))
+    expect(trim(undefined))
       .toBe('')
   })
 
@@ -20,7 +20,7 @@ describe('utils.trim', () => {
   // ======================
 
   it('handles string value', () => {
-    expect(utils.trim('  FOO  BAR  '))
+    expect(trim('  FOO  BAR  '))
       .toBe('FOO BAR')
   })
 })

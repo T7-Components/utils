@@ -1,44 +1,44 @@
-// Utility methods.
-import utils from './'
+// Dependencies.
+import { exists } from './'
 
 // Describe test.
-describe('utils.exists', () => {
+describe('exists', () => {
   // ===========================
   // Test for "existing" values.
   // ===========================
 
   it('handles "existing" values', () => {
-    expect(utils.exists(0))
+    expect(exists(0))
       .toBe(true)
 
-    expect(utils.exists(1))
+    expect(exists(1))
       .toBe(true)
 
-    expect(utils.exists(-1))
+    expect(exists(-1))
       .toBe(true)
 
-    expect(utils.exists(true))
+    expect(exists(true))
       .toBe(true)
 
-    expect(utils.exists(false))
+    expect(exists(false))
       .toBe(true)
 
-    expect(utils.exists(NaN))
+    expect(exists(NaN))
       .toBe(true)
 
-    expect(utils.exists(''))
+    expect(exists(''))
       .toBe(true)
 
-    expect(utils.exists('TEST'))
+    expect(exists('TEST'))
       .toBe(true)
 
-    expect(utils.exists([]))
+    expect(exists([]))
       .toBe(true)
 
-    expect(utils.exists({}))
+    expect(exists({}))
       .toBe(true)
 
-    expect(utils.exists(() => {}))
+    expect(exists(() => {}))
       .toBe(true)
   })
 
@@ -47,10 +47,10 @@ describe('utils.exists', () => {
   // =======================================
 
   it('handles `null` and `undefined` values', () => {
-    expect(utils.exists(null))
+    expect(exists(null))
       .toBe(false)
 
-    expect(utils.exists(undefined))
+    expect(exists(undefined))
       .toBe(false)
   })
 })
