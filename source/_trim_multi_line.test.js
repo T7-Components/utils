@@ -29,33 +29,8 @@ describe('trimMultiLine', () => {
   // ===================================
 
   it('handles "multi-line" string value', () => {
-    // =======
-    // BEFORE.
-    // =======
-
-    const BEFORE =
-`
-
-FOO
-
-
-BAR
-
-
-BAZ
-
-`
-
-    // ======
-    // AFTER.
-    // ======
-
-    const AFTER =
-`FOO
-
-BAR
-
-BAZ`
+    const BEFORE = '  FOO  \n \n  BAR  '
+    const AFTER = 'FOO \n\n BAR'
 
     expect(trimMultiLine(BEFORE))
       .toBe(AFTER)

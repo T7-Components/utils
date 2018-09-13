@@ -261,8 +261,8 @@ utils.today(+1)
 This method will do a typical `string.trim()` but will also replace continuous spaces with a single space. This is helpful for cleaning up strings that are going into markup, where more than one space is treated as a single space anyway.
 
 ```
-// Yields: "A B C".
-utils.trim('  A  B  C  ')
+// Yields: "FOO BAR".
+utils.trim(' FOO  BAR ')
 ```
 
 ---
@@ -272,31 +272,8 @@ utils.trim('  A  B  C  ')
 This method will trim a multi-line string, as one might encounter within a `<textarea>`. It will remove unnecessary spaces, but will preserve up to two new line `\n\n` characters. This allows for a visual "paragraph" to be retained.
 
 ```
-// Excess spaces.
-const BEFORE =
-`
-
-FOO
-
-
-BAR
-
-
-BAZ
-
-`
-
-// Trimmed spaces.
-const AFTER =
-`FOO
-
-BAR
-
-BAZ`
-
-// Yields: `true`.
-expect(utils.trimMultiLine(BEFORE))
-  .toBe(AFTER)
+// Yields: "FOO \n\n BAR".
+utils.trimMultiLine(' FOO  \n  \n  BAR ')
 ```
 
 ---
