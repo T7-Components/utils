@@ -20,8 +20,11 @@ describe('trimMultiLine', () => {
   // ====================================
 
   it('handles "single line" string value', () => {
-    expect(trimMultiLine('  FOO  BAR  '))
-      .toBe('FOO BAR')
+    const OLD = '  FOO  BAR  '
+    const NEW = 'FOO BAR'
+
+    expect(trimMultiLine(OLD))
+      .toBe(NEW)
   })
 
   // ===================================
@@ -29,10 +32,10 @@ describe('trimMultiLine', () => {
   // ===================================
 
   it('handles "multi-line" string value', () => {
-    const BEFORE = '  FOO  \n \n  BAR  '
-    const AFTER = 'FOO \n\n BAR'
+    const OLD = '  FOO  \n \n  BAR  '
+    const NEW = 'FOO \n\n BAR'
 
-    expect(trimMultiLine(BEFORE))
-      .toBe(AFTER)
+    expect(trimMultiLine(OLD))
+      .toBe(NEW)
   })
 })
