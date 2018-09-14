@@ -1,19 +1,13 @@
 // Helper to cancel events.
-const stop = (event = {}) => {
-  // Peel apart.
-  const {
-    preventDefault: p,
-    stopPropagation: s
-  } = event
-
+const stop = (e = {}) => {
   // Prevent default.
-  if (typeof p === 'function') {
-    p()
+  if (typeof e.preventDefault === 'function') {
+    e.preventDefault()
   }
 
   // Stop propagation.
-  if (typeof s === 'function') {
-    s()
+  if (typeof e.stopPropagation === 'function') {
+    e.stopPropagation()
   }
 }
 
