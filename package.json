@@ -1,6 +1,6 @@
 {
   "name": "@t7/utils",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "main": "dist/index.js",
   "description": "Utility methods for T7 components.",
   "author": "TandemSeven <github@tandemseven.com>",
