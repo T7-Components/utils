@@ -14,7 +14,7 @@ describe('contentOnFocus', () => {
   // =============
 
   const event = {
-    target: {
+    currentTarget: {
       innerHTML: DIV_PLACEHOLDER,
       getAttribute: (attr) => {
         if (attr === 'placeholder') {
@@ -32,7 +32,7 @@ describe('contentOnFocus', () => {
     // Fire event.
     contentOnFocus(event)
 
-    expect(event.target.innerHTML)
+    expect(event.currentTarget.innerHTML)
       .toBe('')
   })
 })

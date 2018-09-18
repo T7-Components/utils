@@ -17,7 +17,7 @@ describe('contentOnChange', () => {
 
   const event = {
     type: 'blur',
-    target: {
+    currentTarget: {
       innerHTML: DIV_HTML_RAW,
       getAttribute: (attr) => {
         if (attr === 'placeholder') {
@@ -35,7 +35,7 @@ describe('contentOnChange', () => {
     // Fire event.
     contentOnChange(event)
 
-    expect(event.target.innerHTML)
+    expect(event.currentTarget.innerHTML)
       .toBe(DIV_HTML_PARSED)
   })
 })

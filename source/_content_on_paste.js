@@ -8,18 +8,18 @@ import {
   Used if the browser doesn't allow us
   to intercept the live `paste` event.
 */
-const fallback = (target = {}) => {
+const fallback = (el = {}) => {
   window.setTimeout(() => {
     // Get value.
     let {
       innerText = ''
-    } = target
+    } = el
 
     // Trim.
     innerText = trimMultiLine(innerText)
 
     // Update text.
-    target.innerText = innerText
+    el.innerText = innerText
   }, 0)
 }
 
@@ -31,8 +31,10 @@ const contentOnPaste = (e = {}) => {
   // Prevent paste.
   stop(e)
 
-  // Get target.
-  const { target } = e
+  // Get element.
+  const {
+    currentTarget: el = {}
+  } = e
 
   // Used in conditional.
   let value
@@ -55,7 +57,7 @@ const contentOnPaste = (e = {}) => {
   // No value?
   if (!value) {
     // Use fallback.
-    fallback(target)
+    fallback(el)
 
     // Exit.
     return

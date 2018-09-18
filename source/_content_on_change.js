@@ -10,10 +10,10 @@ import {
   content into plain text, and back into HTML.
 */
 const contentOnChange = (e = {}) => {
-  // Get target.
+  // Get element.
   const {
     type,
-    target = {}
+    currentTarget: el = {}
   } = e
 
   // Event type.
@@ -22,15 +22,15 @@ const contentOnChange = (e = {}) => {
   // Get value.
   let {
     innerHTML: value
-  } = target
+  } = el
 
   // Set in conditional.
   let placeholder = ''
 
   // Get placeholder.
-  if (typeof target.getAttribute === 'function') {
+  if (typeof el.getAttribute === 'function') {
     placeholder = trim(
-      target.getAttribute('placeholder')
+      el.getAttribute('placeholder')
     )
   }
 
@@ -42,7 +42,7 @@ const contentOnChange = (e = {}) => {
   // Blur event?
   if (isBlur) {
     value = contentToMarkup(value)
-    target.innerHTML = value
+    el.innerHTML = value
   }
 }
 

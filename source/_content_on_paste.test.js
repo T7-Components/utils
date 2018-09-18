@@ -128,7 +128,7 @@ describe('contentOnPaste', () => {
           }
         }
       },
-      target: {
+      currentTarget: {
         // Add extra space.
         innerText: ' ' + EXAMPLE_VALUE + ' '
       }
@@ -140,7 +140,7 @@ describe('contentOnPaste', () => {
     // Fast-forward.
     jest.runOnlyPendingTimers()
 
-    expect(event.target.innerText)
+    expect(event.currentTarget.innerText)
       .toBe(trimMultiLine(EXAMPLE_VALUE))
   })
 })

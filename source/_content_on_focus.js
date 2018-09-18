@@ -3,15 +3,15 @@ import { trim } from './'
 
 // Convert text, when "content editable" is focused.
 const contentOnFocus = (e = {}) => {
-  // Get target.
+  // Get element.
   const {
-    target = {}
+    currentTarget: el = {}
   } = e
 
   // Get value.
   let {
     innerHTML: value
-  } = target
+  } = el
 
   value = trim(value)
 
@@ -19,15 +19,15 @@ const contentOnFocus = (e = {}) => {
   let placeholder = ''
 
   // Get placeholder.
-  if (typeof target.getAttribute === 'function') {
+  if (typeof el.getAttribute === 'function') {
     placeholder = trim(
-      target.getAttribute('placeholder')
+      el.getAttribute('placeholder')
     )
   }
 
   // Value is placeholder?
   if (value === placeholder) {
-    target.innerHTML = ''
+    el.innerHTML = ''
   }
 }
 
