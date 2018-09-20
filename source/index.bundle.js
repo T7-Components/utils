@@ -34,6 +34,7 @@ import formatMoneyJP from './_format_money_jp'
 import formatMoneyKR from './_format_money_kr'
 import formatMoneyUK from './_format_money_uk'
 import formatMoneyUS from './_format_money_us'
+import formatNumber from './_format_number'
 import formatPhoneUS from './_format_phone_us'
 import navigate from './_navigate'
 import parseFormData from './_parse_form_data'
@@ -66,6 +67,7 @@ export {
   formatMoneyKR,
   formatMoneyUK,
   formatMoneyUS,
+  formatNumber,
   formatPhoneUS,
   navigate,
   parseFormData,

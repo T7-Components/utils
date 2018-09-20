@@ -2,9 +2,9 @@
 import { exists } from './'
 
 /*
-  Helper to format integers.
+  Helper to format numbers.
 */
-const formatInteger = (value) => {
+const formatNumber = (value) => {
   // Early exit.
   if (!exists(value)) {
     return ''
@@ -14,7 +14,7 @@ const formatInteger = (value) => {
   value = String(value)
 
   // Format.
-  value = value.replace(/\D/g, '')
+  value = value.replace(/[^0-9.]/g, '')
   value = parseFloat(value)
 
   // Ensure numeric.
@@ -27,4 +27,4 @@ const formatInteger = (value) => {
 }
 
 // Export.
-export default formatInteger
+export default formatNumber
