@@ -21,6 +21,12 @@ describe('formatDate', () => {
 
     expect(formatDate('01/1/2018'))
       .toBe(OUTPUT)
+
+    expect(formatDate('011/2018'))
+      .toBe(OUTPUT)
+
+    expect(formatDate('1/012018'))
+      .toBe(OUTPUT)
   })
 
   // =======================================

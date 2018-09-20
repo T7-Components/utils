@@ -38,44 +38,35 @@ const formatDate = (value) => {
     value = numbersOnly
   }
 
-  // Two slashes?
-  if ((value.match(/\//g) || []).length >= 2) {
-    // Split apart.
-    const arr = value.split('/')
+  /*
+    Zero pad: month.
 
-    // Month.
-    let M = (arr[0] || '').slice(0, 2)
+    Matches: "M/DDYYYY" or "M/DD/YYYY"
+  */
+  value = value.replace(
+    /^(\d{1})\/(\d{2})\/?(\d{4})/,
+    '0$1/$2/$3'
+  )
 
-    // Day.
-    let D = (arr[1] || '').slice(0, 2)
+  /*
+    Zero pad: day.
 
-    // Year.
-    const Y = (arr[2] || '').slice(0, 4)
+    Matches: "MM/D/YYYY" or "MMD/YYYY"
+  */
+  value = value.replace(
+    /^(\d{2})\/?(\d{1})\/(\d{4})/,
+    '$1/0$2/$3'
+  )
 
-    // Valid?
-    if (
-      M.length &&
-      D.length &&
-      Y.length === 4
-    ) {
-      // Pad month.
-      if (M.length === 1) {
-        M = '0' + M
-      }
+  /*
+    Zero pad: month and day.
 
-      // Pad day.
-      if (D.length === 1) {
-        D = '0' + D
-      }
-
-      // Build string.
-      value = [
-        M,
-        D,
-        Y
-      ].join('')
-    }
-  }
+    Matches: "M/D/YYYY"
+  */
+  value = value.replace(
+    /^(\d{1})\/(\d{1})\/(\d{4})/,
+    '0$1/0$2/$3'
+  )
 
   // Format.
   value = value.replace(
