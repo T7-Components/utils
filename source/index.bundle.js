@@ -25,6 +25,16 @@ import contentOnPaste from './_content_on_paste'
 import contentToMarkup from './_content_to_markup'
 import contentToText from './_content_to_text'
 import exists from './_exists'
+import formatAlphanumeric from './_format_alphanumeric'
+import formatDate from './_format_date'
+import formatInteger from './_format_integer'
+import formatMoneyDE from './_format_money_de'
+import formatMoneyIN from './_format_money_in'
+import formatMoneyJP from './_format_money_jp'
+import formatMoneyKR from './_format_money_kr'
+import formatMoneyUK from './_format_money_uk'
+import formatMoneyUS from './_format_money_us'
+import formatPhoneUS from './_format_phone_us'
 import navigate from './_navigate'
 import parseFormData from './_parse_form_data'
 import path from './_path'
@@ -47,6 +57,16 @@ export {
   contentToMarkup,
   contentToText,
   exists,
+  formatAlphanumeric,
+  formatDate,
+  formatInteger,
+  formatMoneyDE,
+  formatMoneyIN,
+  formatMoneyJP,
+  formatMoneyKR,
+  formatMoneyUK,
+  formatMoneyUS,
+  formatPhoneUS,
   navigate,
   parseFormData,
   path,
