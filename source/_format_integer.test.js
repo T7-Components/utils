@@ -8,6 +8,12 @@ describe('formatInteger', () => {
   // ===========================
 
   it('handles "existing" values', () => {
+    expect(formatInteger(' '))
+      .toBe('')
+
+    expect(formatInteger(0))
+      .toBe('0')
+
     expect(formatInteger('A~`!@#$%^&*()_+{}[];",.<>?/09'))
       .toBe('9')
   })

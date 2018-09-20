@@ -17,6 +17,11 @@ const formatInteger = (value) => {
   value = value.replace(/\D/g, '')
   value = parseFloat(value)
 
+  // Ensure numeric.
+  if (isNaN(value)) {
+    value = ''
+  }
+
   // Expose string.
   return String(value)
 }
