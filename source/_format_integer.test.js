@@ -14,8 +14,8 @@ describe('formatInteger', () => {
     expect(formatInteger(0))
       .toBe('0')
 
-    expect(formatInteger('A~`!@#$%^&*()_+{}[];",.<>?/09'))
-      .toBe('9')
+    expect(formatInteger('!@#$ABC 01.123 !@#$ABC'))
+      .toBe('01123')
   })
 
   // =======================================

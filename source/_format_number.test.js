@@ -14,7 +14,7 @@ describe('formatNumber', () => {
     expect(formatNumber(0))
       .toBe('0')
 
-    expect(formatNumber('!@#$ABC 1.123 !@#$ABC'))
+    expect(formatNumber('!@#$ABC 01.123 !@#$ABC'))
       .toBe('1.123')
   })
 
