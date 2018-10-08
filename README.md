@@ -6,7 +6,7 @@ npm install @t7/utils --save-dev
 
 https://www.npmjs.com/package/@t7/utils
 
-T7's "utils" is a collection of utilities that have been curated from multiple projects to perform simple targeted tasks.
+T7's "utils" is a collection of React based utilities that have been curated from multiple projects to perform simple targeted tasks.
 
 The entire library can be imported…
 
